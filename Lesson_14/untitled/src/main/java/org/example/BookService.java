@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class BookService {
 
@@ -62,8 +63,24 @@ public class BookService {
     }
 
     public void sortByReleaseDate(ArrayList<Book> list){
+//        list.stream()
+//                .sorted(Comparator.comparing(Book::getReleaseDate))
+//                .forEach(o -> System.out.println(o));
         list.stream()
                 .sorted((o1, o2) -> o1.getReleaseDate().compareTo(o2.getReleaseDate()))
                 .forEach(o -> System.out.println(o));
+    }
+
+    public void sortByReleasePageNumber(ArrayList<Book> list){
+
+        list.stream()
+                .sorted(Comparator.comparing(Book::getPageNumber))
+                .forEach(o -> System.out.println(o));
+
+//        Nếu muốn đảo ngược sort thì dùng lambda và o2, o1 chứ không phải là o1, o2
+//
+//        list.stream()
+//                .sorted((o2, o1) -> o1.getPageNumber()-o2.getPageNumber())
+//                .forEach(o -> System.out.println(o));
     }
 }

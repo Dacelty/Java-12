@@ -34,6 +34,7 @@ public class Controller {
                     getBookByCategory();
                     break;
                 case 4:
+                    service.sortByReleasePageNumber(books);
                     break;
                 case 5:
                     service.sortByReleaseDate(books);
